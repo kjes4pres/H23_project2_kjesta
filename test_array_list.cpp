@@ -198,7 +198,72 @@ void test_shrink_to_fit()
     std::cout << "Success! \n";
 }
 
-int main()
+/**
+ * @brief Test to check the argmin method returns the index of the smallest element of an array list.
+ */
+void test_argmin()
+{
+    ArrayList a{{5,2,7,0,3,2}};
+    int expected = 3; 
+    auto computed = a.argmin();
+    std::cout << "Testing that the argmin method returns the index of the smallest element. \n";
+    assert(computed == expected);
+    std::cout << "Success! \n";
+}
+
+/**
+ * @brief Test to check the argmax method returns the index of the largest element of an array list.
+ */
+void test_argmax()
+{
+    ArrayList a{{5, 2, 7, 0, 3, 2}};
+    int expected = 2;
+    auto computed = a.argmax();
+    std::cout << "Testing that the argmin method returns the index of the largest element. \n";
+    assert(computed == expected);
+    std::cout << "Success! \n";
+}
+
+    /**
+     * @brief Test to check the min method returns the smallest element of an array list.
+     */
+void test_min()
+{
+    ArrayList a{{5,2,7,0,3,2}};
+    int expected = 0;
+    auto computed = a.min();
+    std::cout << "Testing that the min method returns the smallest element. \n";
+    assert(computed == expected);
+    std::cout << "Success! \n";
+}
+
+/**
+ * @brief Test to check the max method returns the largest element of an array list.
+ */
+void test_max()
+{
+    ArrayList a{{5, 2, 7, 0, 3, 2}};
+    int expected = 7;
+    auto computed = a.max();
+    std::cout << "Testing that the max method returns the largest element. \n";
+    assert(computed == expected);
+    std::cout << "Success! \n";
+}
+
+/**
+ * @brief Test to check the max method returns the largest element of an array list.
+ */
+void test_count()
+{
+    ArrayList a{{1, 2, 3, 4, 7, 8, 3, 4, 3, 3}};
+    int expected = 4;
+    auto computed = a.count(3);
+    std::cout << "Testing that the count method returns number of occurences of given value. \n";
+    assert(computed == expected);
+    std::cout << "Success! \n";
+}
+
+    int main()
 {
     test_empty_array_has_length_zero();
     test_array_with_two_elements_appended_has_length_two();
@@ -210,5 +275,10 @@ int main()
     test_pop_at_index();
     test_pop();
     test_shrink_to_fit();
+    test_argmin();
+    test_argmax();
+    test_min();
+    test_max();
+    test_count();
     std::cout << "All tests passed. \n";
 }

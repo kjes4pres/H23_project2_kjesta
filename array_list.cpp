@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <vector>
 #include <cmath>
+#include <algorithm>
 
 class ArrayList
 {
@@ -204,7 +205,7 @@ class ArrayList
         }
         
         _size--;
-        
+    
         if (_size < _capacity / 4) 
         {
             shrink_to_fit();
@@ -260,5 +261,71 @@ class ArrayList
     int capacity()
     {
         return _capacity;
+    }
+
+    /**
+     * @brief Returns the index of the smallest element of array list.
+     */
+    int argmin()
+    {
+        int index_min = 0;
+        for (int i = 1; i < _size; i++)
+        {
+            if (_data[i] < _data[index_min])
+            {
+                index_min = i;
+            }
+        }
+        return index_min;
+    }
+
+    /**
+     * @brief Returns the index of the largest element of array list.
+     */
+    int argmax()
+    {
+        int index_max = 0;
+        for (int i = 1; i < _size; i++)
+        {
+            if (_data[i] > _data[index_max])
+            {
+                index_max = i;
+            }
+        }
+        return index_max;
+    }
+
+    /**
+     * @brief Returns the smallest element of array list.
+     */
+    int min()
+    {
+        auto min_element = std::min_element(_data, _data + _size);
+        return *min_element;
+    }
+
+    /**
+     * @brief Returns the largest element of array list.
+     */
+    int max()
+    {
+        auto max_element = std::max_element(_data, _data + _size);
+        return *max_element;
+    }
+
+    /**
+     * @brief Returns the number of times a given value occurs in an array.
+     */
+    int count(int val)
+    {
+        int counter = 0;
+        for (int i = 0; i < _size; i++)
+        {
+            if (_data[i] == val)
+            {
+                counter += 1;
+            }
+        }
+        return counter;
     }
 };
