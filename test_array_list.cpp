@@ -82,6 +82,10 @@ void test_vector_constructor()
     std::cout << "Success! \n";
 }
 
+/**
+ * @brief Test that insertion of value at a given index, moves elements at higher indexes to the right. 
+ * This should also change the size of the array list by +1.
+ */
 void test_insert()
 {
     ArrayList a{{0, 1}};
@@ -110,8 +114,66 @@ void test_insert()
     std::cout << "Success! \n";
 }
 
-    int
-    main()
+/**
+ * @brief Test that removal of value at a given index, moves elements at higher indexes to the left.
+ *This should also change the size of the array list by -1.
+ */
+void test_remove()
+{
+    ArrayList a{{1, 2, 3, 4, 5}};
+    std::cout << "Test removal of value at start of array. \n";
+    assert(a.length() == 5);
+    a.remove(0);
+    assert(a.length() == 4);
+    assert(a[0] == 2);
+    assert(a[1] == 3);
+    assert(a[2] == 4);
+    assert(a[3] == 5);
+    std::cout << "Test removal of value at middle of array. \n";
+    a.remove(2);
+    assert(a.length() == 3);
+    assert(a[0] == 2);
+    assert(a[1] == 3);
+    assert(a[2] == 5);
+    std::cout << "Test removal of value at end of array. \n";
+    a.remove(2);
+    assert(a.length() == 2);
+    assert(a[0] == 2);
+    assert(a[1] == 3);
+    std::cout << "Success! \n";
+}
+
+/**
+ * @brief Tests that the pop method removes an element and returns the removed element.
+ */
+
+void test_pop_at_index()
+{
+    ArrayList a{{1, 2, 3, 4, 5}};
+    assert(a.length() == 5);
+    std::cout << "Testing that the pop method returns removed element. \n";
+    int result = a.pop(3);
+    assert(a.length() == 4);
+    assert(result == 4);
+    std::cout << "Success! \n";
+}
+
+/**
+ * @brief Tests that the pop method removes the last element  of the array list,
+ * and returns the removed element.
+ */
+void test_pop()
+{
+    ArrayList a{{1, 2, 3, 4, 5}};
+    assert(a.length() == 5);
+    std::cout << "Testing that the pop method removes last element, and returns it. \n";
+    int result = a.pop();
+    assert(a.length() == 4);
+    assert(result == 5);
+    std::cout << "Success! \n";
+}
+
+int main()
 {
     test_empty_array_has_length_zero();
     test_array_with_two_elements_appended_has_length_two();
@@ -119,5 +181,8 @@ void test_insert()
     test_indexing_operator();
     test_vector_constructor();
     test_insert();
+    test_remove();
+    test_pop_at_index();
+    test_pop();
     std::cout << "All tests passed. \n";
 }

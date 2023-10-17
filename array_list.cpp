@@ -155,4 +155,58 @@ class ArrayList
         _data[index] = val;
         _size++;
     }
+
+    /**
+     * @brief Removes element from given index of list. 
+     * Remaining elements are moved down the array to close the gap.
+     *
+     * @param index The index
+     */
+    void remove(int index)
+    {
+        if (index > _size)
+        {
+            throw std::range_error("Index out of bounds.");
+        }
+
+        _data[index] = 0;
+
+        for (int i = index; i < _size - 1; ++i)
+        {
+            _data[i] = _data[i + 1];
+        }
+        
+        _size--;
+    }
+
+    /**
+     * @brief Removes element from given index of list and returns it.
+     *
+     * @param index The index
+     * @return value The removed element
+     */
+    int pop(int index)
+    {
+        if (index < 0 || index > _size)
+        {
+            throw std::range_error("Index out of bounds.");
+        }
+
+        int popped = _data[index];
+        remove(index);
+        return popped;
+    }
+
+    /**
+     * @brief Removes last element of array list and returns it.
+     *
+     * @return value The removed element
+     */
+
+    int pop()
+    {
+        int popped = _data[_size - 1];
+        remove(_size - 1);
+        return popped;
+    }
 };
