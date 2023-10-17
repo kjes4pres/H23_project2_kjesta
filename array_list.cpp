@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <vector>
+#include <cmath>
 
 class ArrayList
 {
@@ -32,9 +33,34 @@ class ArrayList
         _data = newData;
     }
 
-  public:
-    // Default constructor
-    ArrayList()
+    /**
+     * @brief Replaces the underlying storage array with the smallest capacity that will fit all elements. 
+     * Shrinking the array, minimizing storage use.
+     */
+    void shrink_to_fit()
+    {
+        int min_capacity = 1;
+        while (min_capacity < _size)
+        {
+            min_capacity *= 2;
+        }
+    
+        _capacity = min_capacity;
+
+        int *newData = new int[_capacity];
+        for (int i = 0; i < _size; i++)
+        {
+            newData[i] = _data[i];
+        }
+
+        delete[] _data;
+
+        _data = newData;
+    }
+
+        public :
+        // Default constructor
+        ArrayList()
     {
         _data = new int[_capacity];
     }
