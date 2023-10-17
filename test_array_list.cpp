@@ -15,7 +15,80 @@ void test_empty_array_has_length_zero()
     std::cout << " - Success!\n";
 }
 
-int main()
+/**
+ * @brief Test that an array with 2 appended elemets has length 2
+ *
+ */
+void test_array_with_two_elements_appended_has_length_two()
+{
+    ArrayList b{};
+    b.append(1);
+    b.append(2);
+    std::cout << "Test that the array has length 2, when 2 elements have been added.";
+    assert(b.length() == 2);
+    std::cout << " -  Success! \n";
+}
+
+/**
+ * @brief Test that printing of array with 3 unique elements is correct.
+ *
+ */
+void test_print()
+{
+    ArrayList c{};
+    c.append(1);
+    c.append(2);
+    c.append(3);
+    std::cout << "Testing the pretty printing \n";
+    c.print();
+    std::cout << "Success! \n";
+}
+
+/**
+ * @brief Test that printing of array with 3 unique elements is correct.
+ *
+ */
+void test_indexing_operator()
+{
+    ArrayList d{};
+    d.append(3);
+    d.append(2);
+
+    std::cout << "Testing indexing operator. \n";
+    assert(d[0] == 3);
+    assert(d[1] == 2);
+
+    std::cout << "Testing that you can write to the array. \n";
+    d[0] = 6;
+    assert(d[0] == 6);
+    std::cout << "Success! \n";
+}
+
+/**
+ * @brief Test that overloaded costructor costructs a list oject with initialized values.
+ *
+ */
+void test_vector_constructor()
+{
+    std::vector<int> values = {2, 3, 5, 7, 11};
+    ArrayList primes(values);
+
+    std::cout << "Testing that a list object has been constructed. \n";
+    assert(primes.length() == values.size());
+    for (int i = 0; i < values.size(); ++i)
+    {
+        assert(primes[i] == values[i]);
+    }
+    std::cout << "Success! \n";
+}
+
+    int
+    main()
 {
     test_empty_array_has_length_zero();
+    test_array_with_two_elements_appended_has_length_two();
+    test_print();
+    test_indexing_operator();
+    test_vector_constructor();
+    std::cout << "All tests passed. \n";
 }

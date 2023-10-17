@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdexcept>
+#include <vector>
 
 class ArrayList
 {
@@ -10,6 +11,26 @@ class ArrayList
     int _capacity = 1;
     // Size of the array
     int _size = 0;
+    
+    int _growth_factor = 2;
+
+    /**
+     * @brief Resizes current list by the growth factor.
+     */
+    void resize()
+    {
+        _capacity *= _growth_factor;
+        int *newData = new int[_capacity];
+
+        for (int i = 0; i < _size ; i++)
+        {
+            newData[i] = _data[i];
+        }
+
+        delete[] _data;
+
+        _data = newData;
+    }
 
   public:
     // Default constructor
@@ -18,8 +39,22 @@ class ArrayList
         _data = new int[_capacity];
     }
 
-    // Destructor
-    ~ArrayList()
+    // Overloaded constructor
+    ArrayList(std::vector<int> values)
+    {
+        if (_capacity < values.size())
+        {
+            _capacity = values.size();
+        }
+        _data = new int[_capacity];
+        for (int value : values)
+        {
+            append(value);
+        }
+    }
+
+        // Destructor
+        ~ArrayList()
     {
         delete[] _data;
     }
@@ -74,5 +109,22 @@ class ArrayList
             throw std::range_error("Index is out of bounds");
         }
         return _data[index];
+    }
+
+    /**
+     * @brief Append value to end of list.
+     * Resizes list if the current list is full.
+     *
+     * @param value The value to be appended
+     */
+
+    void append(int n)
+    {
+        if (_size >= _capacity)
+        {
+            resize();
+        }
+        _data[_size] = n;
+        _size++;
     }
 };
