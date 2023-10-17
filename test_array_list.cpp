@@ -173,6 +173,31 @@ void test_pop()
     std::cout << "Success! \n";
 }
 
+/**
+ * @brief Tests that when removing elements from array list, the size shrinks.
+ * Starting with appending a bunch of elements, and then pop them out.
+ * Comparing capacity before and after.
+ */
+void test_shrink_to_fit()
+{
+    ArrayList a;
+    for (int i = 0; i < 100; i++)
+    {
+        a.append(i);
+    }
+    int capacity_before = a.capacity();
+
+    for (int i = 0; i < 90; i++)
+    {
+        a.pop();
+    }
+    int capacity_after = a.capacity();
+
+    std::cout << "Testing that capacity has been reduced after removing elements. \n";
+    assert(capacity_after < capacity_before);
+    std::cout << "Success! \n";
+}
+
 int main()
 {
     test_empty_array_has_length_zero();
@@ -184,5 +209,6 @@ int main()
     test_remove();
     test_pop_at_index();
     test_pop();
+    test_shrink_to_fit();
     std::cout << "All tests passed. \n";
 }

@@ -185,6 +185,7 @@ class ArrayList
     /**
      * @brief Removes element from given index of list. 
      * Remaining elements are moved down the array to close the gap.
+     * The size of the array list is shrunk to lessen storage use.
      *
      * @param index The index
      */
@@ -203,6 +204,11 @@ class ArrayList
         }
         
         _size--;
+        
+        if (_size < _capacity / 4) 
+        {
+            shrink_to_fit();
+        }
     }
 
     /**
@@ -220,6 +226,11 @@ class ArrayList
 
         int popped = _data[index];
         remove(index);
+
+        if (_size < _capacity / 4)
+        {
+            shrink_to_fit();
+        }
         return popped;
     }
 
@@ -233,6 +244,21 @@ class ArrayList
     {
         int popped = _data[_size - 1];
         remove(_size - 1);
+
+        if (_size < _capacity / 4)
+        {
+            shrink_to_fit();
+        }
         return popped;
+    }
+
+    /**
+     * @brief Returns the capacity of an array list.
+     *
+     * @return value The capacity of the array list.
+     */
+    int capacity()
+    {
+        return _capacity;
     }
 };
