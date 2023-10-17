@@ -127,4 +127,32 @@ class ArrayList
         _data[_size] = n;
         _size++;
     }
+
+    /**
+     * @brief Inserts a value at the give index of a list.
+     * The element previously stored at that index, and all entries to the right of it (with higher indices), 
+     * is moved one index up to make room for the new value.
+     *
+     * @param value The value to be appended, index The index
+     */
+    void insert(int val, int index)
+    {
+        if (index < 0 || index > _size)
+        {
+            throw std::range_error("Index out of bounds.");
+        }
+
+        if (_size >= _capacity)
+        {
+            resize();
+        }
+
+        for (int i = _size; i > index; --i)
+        {
+            _data[i] = _data[i - 1];
+        }
+
+        _data[index] = val;
+        _size++;
+    }
 };

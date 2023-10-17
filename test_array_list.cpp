@@ -82,6 +82,34 @@ void test_vector_constructor()
     std::cout << "Success! \n";
 }
 
+void test_insert()
+{
+    ArrayList a{{0, 1}};
+    std::cout << "Test insertion of value at start of array. \n";
+    assert(a.length() == 2);
+    a.insert(42, 0);
+    assert(a.length() == 3);
+    assert(a[0] == 42);
+    assert(a[1] == 0);
+    assert(a[2] == 1);
+    std::cout << "Test insertion of value at middle of array. \n";
+    a.insert(43, 1);
+    assert(a.length() == 4);
+    assert(a[0] == 42);
+    assert(a[1] == 43);
+    assert(a[2] == 0);
+    assert(a[3] == 1);
+    std::cout << "Test insertion of value at end of array. \n";
+    a.insert(44, 4);
+    assert(a.length() == 5);
+    assert(a[0] == 42);
+    assert(a[1] == 43);
+    assert(a[2] == 0);
+    assert(a[3] == 1);
+    assert(a[4] == 44);
+    std::cout << "Success! \n";
+}
+
     int
     main()
 {
@@ -90,5 +118,6 @@ void test_vector_constructor()
     test_print();
     test_indexing_operator();
     test_vector_constructor();
+    test_insert();
     std::cout << "All tests passed. \n";
 }
