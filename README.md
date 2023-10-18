@@ -1,5 +1,7 @@
 # H23_project2_kjesta
-Project 2 for kjesta (kjesta@mail.uio.no)
+Project 2, IN1910
+- Repo url: https://github.uio.no/IN1910/H23_project2_kjesta
+- Author: Kjersti Stangeland (kjesta@uio.no)
 
 ## Comments and questions
 
