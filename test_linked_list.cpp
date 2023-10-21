@@ -105,6 +105,10 @@ void test_insert()
     std::cout << "Success! \n";
 }
 
+/**
+ * @brief Testing that you can instantiate a linked list by giving it a vector.
+ *
+ */
 void test_vector_constructor()
 {
     std::vector<int> values = {2, 3, 5, 7, 11};
@@ -119,6 +123,66 @@ void test_vector_constructor()
     std::cout << "Success! \n";
 }
 
+/**
+ * @brief Testing that you can remove an element from list at given index.
+ *
+ */
+void test_remove()
+{
+    LinkedList ll{{1, 2, 3, 4, 5}};
+    std::cout << "Test removal of value at start of list. \n";
+    assert(ll.length() == 5);
+    ll.remove(0);
+    assert(ll.length() == 4);
+    assert(ll[0] == 2);
+    assert(ll[1] == 3);
+    assert(ll[2] == 4);
+    assert(ll[3] == 5);
+    std::cout << "Test removal of value at middle of list. \n";
+    ll.remove(2);
+    assert(ll.length() == 3);
+    assert(ll[0] == 2);
+    assert(ll[1] == 3);
+    assert(ll[2] == 5);
+    std::cout << "Test removal of value at end of list. \n";
+    ll.remove(2);
+    assert(ll.length() == 2);
+    assert(ll[0] == 2);
+    assert(ll[1] == 3);
+    std::cout << "Success! \n";
+}
+
+/**
+ * @brief Testing pop method where you remove an element at given index and return the value.
+ *
+ */
+void test_pop_at_index()
+{
+    LinkedList ll{{1, 2, 3, 4}};
+    assert(ll.length() == 4);
+    std::cout << "Testing that the pop method returns removed element. \n";
+    int result = ll.pop(2);
+    assert(ll.length() == 3);
+    assert(result == 3);
+    std::cout << "Success! \n";
+}
+
+/**
+ * @brief Test that you can pop the last element of a list
+ *
+ */
+void test_pop()
+{
+    LinkedList ll{{1, 2, 3, 4, 5}};
+    assert(ll.length() == 5);
+    std::cout << "Testing that the pop method removes last element, and returns it. \n";
+    int result = ll.pop();
+    assert(ll.length() == 4);
+    assert(result == 5);
+    std::cout << "Success! \n";
+}
+
+
 int main()
 {
     test_empty_list_has_zero_length();
@@ -127,6 +191,9 @@ int main()
     test_index_operator();
     test_insert();
     test_vector_constructor();
+    test_remove();
+    test_pop_at_index();
+    test_pop();
     std::cout << "All test passed, you're doing amazing sweetie! \n";
     return 0;
 }

@@ -204,4 +204,80 @@ class LinkedList
         _size++;
      }
     }
+
+/**
+     * @brief Removes element at given index
+     *
+     * @param index The index where value will be removed
+     */
+    void remove(int index)
+    {
+     if (index > _size || index < 0)
+        {
+            throw std::out_of_range("Index " + std::to_string(index) + " is out of range.");
+        }  
+
+    if (index == 0)
+    {
+            Node *temporary = head;
+            head = head->next;
+            head->prev = nullptr;
+            delete temporary;
+    }
+
+    else if (index == _size - 1)
+    {
+        Node *temporary = tail;
+        tail = tail->prev;
+        tail->next = nullptr;
+        delete temporary;
+    }
+
+    else
+        {
+            Node *current = head;
+            for (int i = 0; i < index; i++)
+            {
+            current = current->next;
+            }
+            current->prev->next = current->next;
+            current->next->prev = current->prev;
+            delete current; 
+        }
+    _size--;
+    }
+
+/**
+     * @brief Removes element at given index and returns it.
+     *
+     * @param index The index where value will be removed
+     * @return int Value of element that was removed
+     */
+    int pop(int index)
+    {
+        if (index > _size || index < 0)
+        {
+            throw std::out_of_range("Index " + std::to_string(index) + " is out of range.");
+        }  
+
+        Node *current = head;
+            for (int i = 0; i < index; i++)
+            {
+            current = current->next;
+            }
+            int value = current->value;
+            remove(index);
+            return value;
+    }
+
+    /**
+     * @brief Removes the last element of a list and returns the value
+     * @return The element removed
+     */
+    int pop() 
+    {
+            int value = tail->value;
+            remove(_size - 1);
+            return value;
+    }
 };
