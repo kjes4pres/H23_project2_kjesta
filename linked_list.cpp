@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdexcept>
+#include <vector>
 
 struct Node
 {
@@ -39,6 +40,15 @@ class LinkedList
     // Default constructor
     LinkedList()
     {
+    }
+
+    // Overloaded constructor
+    LinkedList(std::vector<int> values)
+    {
+        for (int v : values)
+        {
+            append(v);
+        }
     }
 
     // Destructor
@@ -106,5 +116,92 @@ class LinkedList
             head = newNode;
         }
         _size++;
+    }
+
+    /**
+     * @brief Add element to the end of the list
+     *
+     * @param val The value to be added
+     */
+    void append(int val)
+    {
+     Node *newNode = new Node{val, nullptr, tail};
+     if (_size == 0)
+     {
+        head = newNode;
+        tail = newNode;
+     }
+     else {
+        tail->next = newNode;
+        tail = newNode;
+     }
+        _size++;
+    }
+
+
+/**
+     * @brief Overloads the square bracket operator to access elements by index
+     *
+     * @param index The index to be accessed
+     */
+    int &operator[](int index)
+    {
+        if (index > _size || index < 0)
+        {
+            throw std::out_of_range("Index " + std::to_string(index) + " is out of range.");
+        }
+        
+        int current_index = 0;
+        Node *current = head;
+        while (current != nullptr)
+        {
+            if (current_index == index)
+            {
+                return current->value;
+            }
+            current = current->next;
+            current_index++;
+        }
+        throw std::out_of_range("Index " + std::to_string(index) + " is out of range.");
+    }
+
+/**
+     * @brief Insert element into list at given index
+     *
+     * @param val The value to be inserted
+     * @param index The index where value will be inserted.
+     */
+    void insert(int val, int index)
+    {
+        if (index > _size || index < 0)
+        {
+            throw std::out_of_range("Index " + std::to_string(index) + " is out of range.");
+        }
+
+        Node *newNode = new Node{val, nullptr, nullptr};
+
+     if (index == 0)
+     {
+        push_front(val);
+     }
+     else if (index == _size)
+     {
+        append(val);
+     }
+     else
+     {
+        Node *current = head;
+        for (int i = 0; i < index; i++)
+        {
+            current = current->next;
+        }
+        // Now current is pointing to the index  we want to insert at.
+        newNode->next = current;
+        newNode->prev = current->prev;
+
+        current->prev->next = newNode;
+        current->prev = newNode;
+        _size++;
+     }
     }
 };
