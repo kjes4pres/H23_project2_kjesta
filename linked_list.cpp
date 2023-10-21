@@ -7,6 +7,8 @@ struct Node
     int value;
     // Pointer to the next node
     Node *next = nullptr;
+    // Pointer to the previous node
+    Node *prev = nullptr;
 };
 
 class LinkedList
@@ -14,6 +16,10 @@ class LinkedList
   private:
     // Pointer to the first element in the list
     Node *head = nullptr;
+
+    // Pointer to the last element in the list
+    Node *tail = nullptr;
+
     // Size of the list
     int _size = 0;
 
@@ -87,7 +93,18 @@ class LinkedList
      */
     void push_front(int val)
     {
-        head = new Node{val, head};
+        // Making a new Node for the value we want to insert at front of list
+        Node *newNode = new Node{val, head, nullptr};
+
+        if (_size == 0)
+        {
+            head = newNode;
+            tail = newNode;
+        }
+        else {
+            head->prev = newNode;
+            head = newNode;
+        }
         _size++;
     }
 };
