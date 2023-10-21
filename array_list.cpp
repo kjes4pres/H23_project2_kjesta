@@ -142,9 +142,8 @@ class ArrayList
      * @brief Append value to end of list.
      * Resizes list if the current list is full.
      *
-     * @param value The value to be appended
+     * @param n The value to be appended
      */
-
     void append(int n)
     {
         if (_size >= _capacity)
@@ -160,7 +159,8 @@ class ArrayList
      * The element previously stored at that index, and all entries to the right of it (with higher indices), 
      * is moved one index up to make room for the new value.
      *
-     * @param value The value to be appended, index The index
+     * @param val The value to be appended
+     * @param index The index
      */
     void insert(int val, int index)
     {
@@ -237,10 +237,8 @@ class ArrayList
 
     /**
      * @brief Removes last element of array list and returns it.
-     *
      * @return value The removed element
      */
-
     int pop()
     {
         int popped = _data[_size - 1];
@@ -315,6 +313,7 @@ class ArrayList
 
     /**
      * @brief Returns the number of times a given value occurs in an array.
+     * @param val The value to be counted
      */
     int count(int val)
     {
