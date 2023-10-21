@@ -12,3 +12,8 @@ Project 2, IN1910
 ### test_array_list.cpp
 - compiled using: "c++ -std=c++14 test_array_list.cpp -o test_array_list"
 - ran program using: "./test_array_list"
+### linked_list.cpp
+- did not compile.
+### test_linked_list.cpp
+- compiled using: "c++ -std=c++14 test_linked_list.cpp -o test_linked_list"
+- ran program using: ".\test_linked_list"
