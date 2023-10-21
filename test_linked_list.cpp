@@ -182,6 +182,34 @@ void test_pop()
     std::cout << "Success! \n";
 }
 
+/**
+ * @brief Test to find the smallest element in a list using min() method
+ *
+ */
+void test_min() 
+{
+    LinkedList ll{{4, 8, 2, 0, 7, 3}};
+    int expected = 0;
+    int result = ll.min();
+    std::cout << "Testing to find the smallest element in a list. \n";
+    assert(expected == result);
+    std::cout << "Success! \n";
+}
+
+/**
+ * @brief Test to find the largest element in a list using max() method
+ *
+ */
+void test_max() 
+{
+    LinkedList ll{{4, 8, 2, 0, 7, 3}};
+    int expected = 8;
+    int result = ll.max();
+    std::cout << "Testing to find the largest element in a list. \n";
+    assert(expected == result);
+    std::cout << "Success! \n";
+}
+
 
 int main()
 {
@@ -194,6 +222,8 @@ int main()
     test_remove();
     test_pop_at_index();
     test_pop();
+    test_min();
+    test_max();
     std::cout << "All test passed, you're doing amazing sweetie! \n";
     return 0;
 }

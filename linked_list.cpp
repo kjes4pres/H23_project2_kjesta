@@ -280,4 +280,42 @@ class LinkedList
             remove(_size - 1);
             return value;
     }
+
+    /**
+     * @brief Traverse a list and find the smallest element.
+     * @return Smallest element
+     */
+    int min()
+    {
+        Node *current = head;
+        int smallest_value = current ->value;
+        while (current != nullptr) 
+        {
+        if (current->value < smallest_value)
+        {
+            smallest_value = current->value;
+        }
+        current = current->next;
+        }
+        return smallest_value;
+    }
+
+     /**
+     * @brief Traverse a list and find the largest element.
+     * @return Largest element
+     */
+    int max()
+    {
+        Node *current = head;
+        int largest_value = current ->value;
+        while (current != nullptr) 
+        {
+        if (current->value > largest_value)
+        {
+            largest_value = current->value;
+        }
+        current = current->next;
+        }
+        return largest_value;
+    }
 };
