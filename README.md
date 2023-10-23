@@ -20,23 +20,25 @@ Project 2, IN1910
 
 ## Answers to task 3a) - Algorithm analysis
 - Get element by index i:
-    - In the ArrayList this is done using the int get(int) method.
+    - In the ArrayList this is done using the 
+    
+int get(int) method.
 
     int get(int index)
     {
         if ((index < 0) || (index >= _size))
         {
-            throw std::range_error("Index is out of bounds");
-        }
-        return _data[index];
+        throw std::range_error("Index is out of bounds");
+    }
+    return _data[index];
     }
     
     - Meaning that the method/algorithm does not depend on the lenght of the object. In Big-Oh notation this means that the algorithm has a constant relationship with runtime.
 
     - In the LinkedList, retrieving and element by index i is used with  int &operator[] (int index) method.
 
-    int &operator[](int index)
-    {
+      int &operator[](int index)
+      {
         if (index > _size || index < 0)
         {
             throw std::out_of_range("Index " + std::to_string(index) + " is out of range.");
@@ -55,6 +57,5 @@ Project 2, IN1910
         }
         throw std::out_of_range("Index " + std::to_string(index) + " is out of range.");
     }
-    
-    - Which gives a linear relationship with runtime. Double the size of the list, you double the runtime for the algorithm to run.
-
+   
+- Which gives a linear relationship with runtime. Double the size of the list, you double the runtime for the algorithm to run.
