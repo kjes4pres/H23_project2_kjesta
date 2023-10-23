@@ -17,6 +17,9 @@ Project 2, IN1910
 ### test_linked_list.cpp
 - compiled using: "c++ -std=c++14 test_linked_list.cpp -o test_linked_list"
 - ran program using: ".\test_linked_list"
+### compare_array_list_and_linked_list.cpp
+- compiled using: "c++ -std=c++14 compare_array_list_and_linked_list.cpp -o compare"
+- ran program using: "./compare"
 
 ## Answers to task 3a) - Algorithm analysis
 - #### Get element by index i:
