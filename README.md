@@ -33,9 +33,9 @@ int get(int) method.
     return _data[index];
     }
     
-    - Meaning that the method/algorithm does not depend on the lenght of the object. In Big-Oh notation this means that the algorithm has a constant relationship with runtime.
+- Meaning that the method/algorithm does not depend on the lenght of the object. In Big-Oh notation this means that the algorithm has a constant relationship with runtime.
 
-    - In the LinkedList, retrieving and element by index i is used with  int &operator[] (int index) method.
+- In the LinkedList, retrieving and element by index i is used with  int &operator[] (int index) method.
 
       int &operator[](int index)
       {
@@ -56,6 +56,7 @@ int get(int) method.
             current_index++;
         }
         throw std::out_of_range("Index " + std::to_string(index) + " is out of range.");
-    }
+      }
    
 - Which gives a linear relationship with runtime. Double the size of the list, you double the runtime for the algorithm to run.
+
