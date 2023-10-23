@@ -6,6 +6,7 @@ Project 2, IN1910
 ## Comments and questions
 
 ## Compiling the programs
+- All compiling programs has been checked on a IFI machine using ssh.
 
 ### array_list.cpp
 - did not compile.
