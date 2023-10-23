@@ -64,3 +64,11 @@ Project 2, IN1910
 
     - LinkedList: this print method also has to iterate the whole list (or nodes), and is also O(N).
 
+## Answers to task 3b) - timing your implementation
+- From the plots in arraylist_vs_linkedlist.png, by looking at them it seems that:
+    - The acutal run time for the ArrayList and the get method, truly is constant O(1). The run time remains roughly the same, even when the list size increases.
+    - ArrayList and the insert method seems to have a certian size limit, that when overstepped, the run time grows at a larger rate. It seems linear, but with a almost dis-continuty when the size of the list gets bigger than 10^3. Something like O(N) for N < 10^3, and 4*O(N) for N > 10^3.
+    - LinkedList and its get method acts as an O(N) algorithm, but more as an 10*O(N), meaning alot more slower.
+    - LinkedList and its insert method has the biggest deviation of them all in the plots. The run time measured on my computer goes as O(N), rather than O(1).
+
+
