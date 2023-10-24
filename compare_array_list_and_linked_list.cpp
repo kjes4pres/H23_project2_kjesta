@@ -107,7 +107,7 @@ void run_linked_list_insert_front()
     for (int N = 100; N < 1E6; N *= 10)
     {
         auto start = high_resolution_clock::now();
-        ArrayList a{};
+        LinkedList a{};
         for (int i = 0; i < N; i++)
         {
             a.insert(i, 0);
@@ -122,8 +122,8 @@ void run_linked_list_insert_front()
 
 int main()
 {
-    // run_array_list_get();
-    // run_array_list_insert_front();
+    run_array_list_get();
+    run_array_list_insert_front();
 
     // You need to first implement these
     run_linked_list_get();
