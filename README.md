@@ -4,6 +4,7 @@ Project 2, IN1910
 - Author: Kjersti Stangeland (kjesta@uio.no)
 
 ## Comments and questions
+- I am well aware that I did not plot the estimate of run time in question 3b) as asked. I unfortunately do not have time. 
 
 ## Compiling the programs
 - All compiling programs has been checked on a IFI machine using ssh.
